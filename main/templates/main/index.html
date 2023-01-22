@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <title>{{ title }}</title>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="icon" type="image/x-icon" href="{{ favicon.url }}">
+      <style type="text/css">
+
+@font-face {
+    font-family: "FRANKLIN GOTHIC HEAVY";
+    src: url({% static "main/founts/FRANKLIN GOTHIC HEAVY/FRAHV.TTF" %}) format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+body {
+    background: url({% static "main/images/1_5_1_zip.png" %}) no-repeat fixed;
+    background-size: cover;
+}
+
+.Greetings-h1 {
+  text-align: center;
+  font-size: 7vw;
+  color: white;
+  font-family: "FRANKLIN GOTHIC HEAVY", serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0 -50% 0 0;
+  transform: translate(-50%, -50%)
+}
+
+@keyframes slide {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.Greetings-h1:first-child {
+    animation: slide 4s ;
+}
+      </style>
+  </head>
+
+  <body>
+  	<div>
+  		<a  href="{% url 'Projects' %}">
+		    <h1 class="Greetings-h1">{{ greetingText }}</h1>
+		</a>
+	</div>
+
+  </body>
+
+</html>
