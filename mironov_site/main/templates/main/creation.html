@@ -1,0 +1,105 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block head %}
+<link rel="icon" type="image/x-icon" href="{{ favicon.url }}">
+<style>
+    .container {
+        max-width: 85vw;
+    }
+</style>
+
+{% endblock%}
+
+{% block content %}
+    <div class="site-section">
+      <div class="container">
+            <div class="row mb-5">
+                {% for p in object_list %}
+                    <div class="col-md-6 col-lg-4 mb-5 mb-lg-5 blog-entry"  data-aos="fade-up" data-aos-delay="200">
+                        <div class="thumbnail">
+                            <div class="tz-gallery">
+                            <a href="{{ p.Preview.url }}" class="d-block mb-4">
+                                <img src="{{ p.Preview.url }}" alt="Автор проекта Максим Миронов" class="img-fluid"> <!-- {{ p.Preview.url }} -->
+                            </a>
+                            {% if p.Photos1 %}
+                            <h2 class="mb-4"><a href="{{ p.Photos1.url }}"></a></h2> <!-- {{ p.title }} -->
+                            {% endif %}
+                            {% if p.Photos2 %}
+                            <h2 class="mb-4"><a href="{{ p.Photos2.url }}"></a></h2>
+                            {% endif %}
+                            {% if p.Photos3 %}
+                            <h2 class="mb-4"><a href="{{ p.Photos3.url }}"></a></h2>
+                            {% endif %}
+                            {% if p.Photos4 %}
+                            <h2 class="mb-4"><a href="{{ p.Photos4.url }}"></a></h2>
+                            {% endif %}
+                            {% if p.Photos5 %}
+                            <h2 class="mb-4"><a href="{{ p.Photos5.url }}"></a></h2>
+                            {% endif %}
+                            {% if p.Photos6 %}
+                            <h2 class="mb-4"><a href="{{ p.Photos6.url }}"></a></h2>
+                            {% endif %}
+                            {% if p.Photos7 %}
+                            <h2 class="mb-4"><a href="{{ p.Photos7.url }}"></a></h2>
+                            {% endif %}
+                            {% if p.Photos8 %}
+                            <h2 class="mb-4"><a href="{{ p.Photos8.url }}"></a></h2>
+                            {% endif %}
+                            {% if p.Photos9 %}
+                            <h2 class="mb-4"><a href="{{ p.Photos9.url }}"></a></h2>
+                            {% endif %}
+                            {% if p.Photos10 %}
+                            <h2 class="mb-4"><a href="{{ p.Photos10.url }}"></a></h2>
+                            {% endif %}
+
+
+                        <!--<div class="mb-4 post-meta d-flex align-items-center">-->
+                        <!--    <div><span>{{ p.title }}</span></div>-->
+                        <!--</div>-->
+
+                        {% if p.linkInstagram or p.linkTwitter or p.linkVK or p.linkRarible %}
+                        <p data-aos="fade-right" data-aos-delay="500">
+                            {% if p.linkVK %}
+                            <a href="{{ p.linkVK }}" class="p-2"><span class="icon-vk"></span></a>
+                            {% endif %}
+                            {% if p.linkTwitter %}
+                            <a href="{{ p.linkTwitter }}" class="p-2"><span class="icon-twitter"></span></a>
+                            {% endif %}
+                            {% if p.linkInstagram %}
+                            <a href="{{ p.linkInstagram }}" class="p-2"><span class="icon-instagram"></span></a>
+                            {% endif %}
+{#                            <a href="{{ p.linkRarible }}" class="p-2"><span class="icon">Rarible</span></a>#}
+                        </p>
+                            {% endif %}
+                            </div>
+                    </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
+        
+        <!--{% if page_obj.has_other_pages %}-->
+        <!--<div class="row" data-aos="fade-up" data-aos-delay="500">-->
+        <!--  <div class="col-md-12 text-center">-->
+        <!--        <div class="custom-pagination">-->
+        <!--        <nav>-->
+        <!--            {% for p in paginator.page_range %}-->
+        <!--                {% if page_obj.number == p %}-->
+        <!--                    <span>{{ p }}</span>-->
+        <!--                {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}-->
+        <!--                   <a href="?page={{ p }}">{{ p }}</a>-->
+        <!--                {% endif %}-->
+        <!--            {% endfor %}-->
+        <!--        </nav>-->
+        <!--        </div>-->
+        <!--  </div>-->
+        <!--</div>-->
+        <!--{% endif %}-->
+
+
+
+      </div>
+    </div>
+
+{% endblock %}

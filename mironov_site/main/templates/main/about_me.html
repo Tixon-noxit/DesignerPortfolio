@@ -1,0 +1,106 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="icon" type="image/x-icon" href="{{ favicon.url }}">
+{% endblock %}
+
+{% block content %}
+{% if biography %}
+<div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-4 ">
+            <div class="site-section-heading" data-aos="fade-up" data-aos-delay="100">
+              <h2>Биография</h2>
+            </div>
+          </div>
+          <div class="col-lg-5 mt-5 pl-lg-5" data-aos="fade-up" data-aos-delay="200">
+            <p>{{ biography }}</p>
+          </div>
+        </div>
+        <div class="row mb-5">
+          <div class="col-12" data-aos="fade-up" data-aos-delay="300">
+{#              <img src="{% static "images/1/IMG_1700 (М).jpg" %}" alt="Image" class="img-fluid">#}
+              <img src="{{ photo.url }}" alt="Image" class="img-fluid">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="400"><span class="text-primary">Навыки</span></div>
+          <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
+              {% autoescape off %}
+              <p>{{ skills }}</p>
+              {% endautoescape %}
+        </div>
+      </div>
+    </div>
+
+{% endif %}
+
+
+{% if education %}
+<div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-4" data-aos="fade-up">
+            <div class="site-section-heading">
+              <h2>Образование</h2>
+            </div>
+          </div>
+          <div class="col-lg-6 mt-5 pl-lg-5" data-aos="fade-up" data-aos-delay="100">
+
+          </div>
+        </div>
+
+        <div class="row align-items-stretch program">
+
+            {% for ed in education %}
+              <div class="col-12 border-top border-bottom py-5" data-aos="fade" data-aos-delay="200">
+                  <div class="row align-items-stretch">
+                    <div class="col-md-3 text-white mb-3 mb-md-0"><span class="h4">{{ ed.periodOfStudy }}</span> <span>гг.</span></div>
+                        <div class="col-md-9">
+                            <h2 class="text-white">{{ ed.theNameOfTheInstitution}}
+                            </h2>
+                        <span>{{ ed.receivedSkills}}</span>
+                        </div>
+                  </div>
+              </div>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+{% endif %}
+    {% if Partners %}
+    <div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-4 ">
+            <div class="site-section-heading" data-aos="fade-up">
+              <h2>Сотрудничество</h2>
+            </div>
+          </div>
+          <div class="col-lg-6 mt-5 pl-lg-5" data-aos="fade-up" data-aos-delay="100">
+
+          </div>
+        </div>
+        <div class="row mb-5">
+            {% for img in Partners %}
+                {% if img.is_published %}
+                <div class="col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
+                    <a target="_blank"><img src="{{ img.Photos.url }}" alt="Клиент Максима Миронова" class="img-fluid"></a>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+      {% endif %}
+
+        <div class="row" data-aos="fade-up" data-aos-delay="500">
+          <div class="col-12 text-center pt-5">
+            <a href="{% url 'Contacts' %}" class="btn-custom" data-aos="fade-up" data-aos-delay="800"><span>Сотрудничать</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+
+{% block head %}
+
+<link rel="icon" type="image/x-icon" href="{{ favicon.url }}">
+<link rel="stylesheet" href="{% static "main/css/alert_contact.css" %} "/>
+
+<style>
+      body {
+        background: url({{ backgroundContact.url }});
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+        <div class="alert success">
+            <span {% if message.tags %} class="closebtn" onclick="this.parentElement.style.display='none';" {% endif %}>&times;</span>
+                {{ message }}
+        </div>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+
+<div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6" data-aos="fade-up">
+            
+            <form action="" method="POST" > 
+                {% csrf_token %}
+
+              <div class="row form-group">
+                <div class="col-md-6 mb-3 mb-md-0">
+                  <label class="" for="fname" for="{{ form.first_name.id_for_label }}">{{ form.first_name.label}}</label>
+                  <div type="text">{{ form.first_name }}</div>
+                </div>
+                <div class="col-md-6">
+                  <label class="" for="tel" for="{{ form.telephone.id_for_label }}">{{ form.telephone.label}}</label>
+                  <div type="tel">{{ form.telephone }}</div>
+                </div>
+              </div>
+
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <label class="" for="email" for="{{ form.email.id_for_label }}">{{ form.email.label}}</label>
+                  <div type="email">{{ form.email }}</div>
+                </div>
+              </div>
+
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <label class="" for="subject" for="{{ form.subject.id_for_label }}">{{ form.subject.label}}</label>
+                  <div type="subject">{{ form.subject }}</div>
+                </div>
+              </div>
+
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <label class="" for="message" for="{{ form.message.id_for_label }}">{{ form.message.label}}</label>
+                  <div  >{{ form.message }}</div>
+                </div>
+              </div>
+
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <input type="submit" value="Отправить" class="btn btn-primary py-2 px-4 text-white">
+                </div>
+              </div>
+
+            </form>
+          </div>
+          <div class="col-md-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
+            <div class="p-4 mb-3">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

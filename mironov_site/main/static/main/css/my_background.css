@@ -1,0 +1,17 @@
+{% load static %}
+@font-face {
+font-family: "Fashion Fetish Light";
+src: url("../static/main/founts/Fashion Fetish/Fashion Fetish Light.ttf") format("truetype");
+font-style: normal;
+font-weight: normal;
+}
+
+body {
+  line-height: 1.7;
+  color: #cfcfd1;
+  font-weight: 300;
+  font-size: 1rem;
+  background: url("../../../static/main/images/Bez_imeni-1.png");
+  background-size: cover;
+  font-family: "Fashion Fetish Light", serif;
+}
